@@ -51,45 +51,49 @@ class GoogleAdsHelper {
   }
 
   static void loadBannerAd() {
-    bannerAd = BannerAd(
-      adUnitId: GoogleAdsHelper().bannerAdUnitId,
-      request: AdRequest(),
-      size: AdSize.banner,
-      listener: BannerAdListener(
-        onAdLoaded: (ad) {
-          print('LocalPrint $ad loaded: ${ad.responseInfo?.mediationAdapterClassName}');
-        },
-        onAdFailedToLoad: (ad, err) {
-          print('LocalPrint Failed to load a banner ad: ${err.message}');
-          ad.dispose();
-        },
-      ),
-    );
+    if (!isPaidMember) {
+      bannerAd = BannerAd(
+        adUnitId: GoogleAdsHelper().bannerAdUnitId,
+        request: AdRequest(),
+        size: AdSize.banner,
+        listener: BannerAdListener(
+          onAdLoaded: (ad) {
+            print('LocalPrint $ad loaded: ${ad.responseInfo?.mediationAdapterClassName}');
+          },
+          onAdFailedToLoad: (ad, err) {
+            print('LocalPrint Failed to load a banner ad: ${err.message}');
+            ad.dispose();
+          },
+        ),
+      );
 
-    bannerAd!.load();
+      bannerAd!.load();
+    }
   }
 
-  static Future<void> loadInterstitialAd() {
-    return InterstitialAd.load(
-      adUnitId: GoogleAdsHelper().interstitialAdUnitId,
-      request: AdRequest(),
-      adLoadCallback: InterstitialAdLoadCallback(
-        onAdLoaded: (ad) {
-          interstitialAd = ad;
-          ad.fullScreenContentCallback = FullScreenContentCallback(
-            onAdDismissedFullScreenContent: (ad) {
-              // loadInterstitialAd();
-              return;
-            },
-          );
-          // _isInterstitialAdReady = true;
-        },
-        onAdFailedToLoad: (err) {
-          print('Failed to load an interstitial ad: ${err.message}');
-          // _isInterstitialAdReady = false;
-        },
-      ),
-    );
+  static void loadInterstitialAd() {
+    if (!isPaidMember) {
+      InterstitialAd.load(
+        adUnitId: GoogleAdsHelper().interstitialAdUnitId,
+        request: AdRequest(),
+        adLoadCallback: InterstitialAdLoadCallback(
+          onAdLoaded: (ad) {
+            interstitialAd = ad;
+            ad.fullScreenContentCallback = FullScreenContentCallback(
+              onAdDismissedFullScreenContent: (ad) {
+                // loadInterstitialAd();
+                return;
+              },
+            );
+            // _isInterstitialAdReady = true;
+          },
+          onAdFailedToLoad: (err) {
+            print('Failed to load an interstitial ad: ${err.message}');
+            // _isInterstitialAdReady = false;
+          },
+        ),
+      );
+    }
   }
 
   static Future<String> showInterstitialAd() async {
@@ -106,8 +110,10 @@ class GoogleAdsHelper {
 
   static void dispose() {
     print('Disposal of Adds occuring');
-    bannerAd?.dispose();
-    interstitialAd?.dispose();
+    if (!isPaidMember) {
+      bannerAd?.dispose();
+      interstitialAd?.dispose();
+    }
   }
 
   Widget placeBannerAd() {
