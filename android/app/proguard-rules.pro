@@ -1,0 +1,2 @@
+-keep class app.rightcode.mathician.BuildConfig { *; }
+-keep class android.support.multidex.MultiDexApplication
