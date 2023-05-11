@@ -101,7 +101,7 @@ class _DashboardViewState extends State<DashboardView> with SingleTickerProvider
                     Spacer(),
                     InkWell(
                       onTap: () {
-                        print('No Ads');
+                        // cec339cd print('No Ads');
                       },
                       borderRadius: BorderRadius.circular(24),
                       child: Padding(

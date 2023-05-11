@@ -75,6 +75,6 @@ class SignRepository {
 
 void main() {
   for (int i = 1; i <= 5; i++) {
-    print(SignRepository.getSignDataList(i));
+    // cec339cd print(SignRepository.getSignDataList(i));
   }
 }

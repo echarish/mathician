@@ -58,10 +58,10 @@ class GoogleAdsHelper {
         size: AdSize.banner,
         listener: BannerAdListener(
           onAdLoaded: (ad) {
-            print('LocalPrint $ad loaded: ${ad.responseInfo?.mediationAdapterClassName}');
+            // cec339cd print('LocalPrint $ad loaded: ${ad.responseInfo?.mediationAdapterClassName}');
           },
           onAdFailedToLoad: (ad, err) {
-            print('LocalPrint Failed to load a banner ad: ${err.message}');
+            // cec339cd print('LocalPrint Failed to load a banner ad: ${err.message}');
             ad.dispose();
           },
         ),
@@ -88,7 +88,7 @@ class GoogleAdsHelper {
             // _isInterstitialAdReady = true;
           },
           onAdFailedToLoad: (err) {
-            print('Failed to load an interstitial ad: ${err.message}');
+            // cec339cd print('Failed to load an interstitial ad: ${err.message}');
             // _isInterstitialAdReady = false;
           },
         ),
@@ -109,7 +109,7 @@ class GoogleAdsHelper {
   }
 
   static void dispose() {
-    print('Disposal of Adds occuring');
+    // cec339cd print('Disposal of Adds occuring');
     if (!isPaidMember) {
       bannerAd?.dispose();
       interstitialAd?.dispose();

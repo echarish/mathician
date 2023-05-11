@@ -60,17 +60,17 @@ List<String> testDeviceIds = ["93CD3BE2B4B3737EFCF48F8FEBFC0502"];
 void _initGoogleMobileAds() async {
   await MobileAds.instance.initialize().then((initializationStatus) {
     initializationStatus.adapterStatuses.forEach((key, value) {
-      print('LocalPrint Adapter status for $key: ${value.description}');
+      // cec339cd print('LocalPrint Adapter status for $key: ${value.description}');
     });
   });
 
   bool isDevelopment = FlutterConfig.get('IS_DEVELOPMENT') == "true";
-  print('LocalPrint IS_DEVELOPMENT ${isDevelopment}');
+  // cec339cd print('LocalPrint IS_DEVELOPMENT ${isDevelopment}');
 
   if (isDevelopment) {
     RequestConfiguration configuration = RequestConfiguration(testDeviceIds: testDeviceIds);
     MobileAds.instance.updateRequestConfiguration(configuration);
-    print('LocalPrint ${configuration.testDeviceIds}');
+    // cec339cd print('LocalPrint ${configuration.testDeviceIds}');
   }
   GoogleAdsHelper.initialize();
 }

@@ -83,7 +83,7 @@ class GridItemView extends StatelessWidget {
       // print('$horizontalLine and (horizontalLine / 2) ${(horizontalLine / 2)} & index $index');
 
       int tempIndex = (horizontalLine / 2) > index ? 0 : 1;
-      print('TempIndex $tempIndex');
+      // cec339cd print('TempIndex $tempIndex');
       return SizedBox(
         height: verticalLine,
         child: Row(
