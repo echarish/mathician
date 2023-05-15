@@ -3,7 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mathgame/src/ads/ad_helper.dart';
 import 'package:mathgame/src/core/app_assets.dart';
+import 'package:mathgame/src/core/app_utils.dart';
 import 'package:mathgame/src/core/color_scheme.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 import 'package:mathgame/src/ui/app/theme_provider.dart';
 import 'package:mathgame/src/ui/common/common_alert_dialog.dart';
 import 'package:mathgame/src/ui/common/common_difficulty_view.dart';
@@ -53,6 +55,131 @@ class _DashboardViewState extends State<DashboardView> with SingleTickerProvider
     _controller.dispose();
   }
 
+  // bool _validateError = false;
+  // proveYouAreAdult() {
+  //   ThemeData theme = Theme.of(context);
+  //   String userAnswer = '';
+  //   int firstNumber = AppUtils.twoDigitRandomNumber();
+  //   int secondNumber = AppUtils.twoDigitRandomNumber();
+  //   int sumOfTwoNumber = firstNumber + secondNumber;
+
+  //   return showDialog<String>(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return AlertDialog(
+  //         shape: RoundedRectangleBorder(
+  //           borderRadius: BorderRadius.circular(16.0),
+  //         ),
+  //         icon: Icon(
+  //           Icons.update,
+  //           size: 40,
+  //         ),
+  //         iconColor: theme.primaryColor,
+  //         title: Text(
+  //           'Before we proceed for subscripiton purchase',
+  //           style: TextStyle(
+  //             fontWeight: FontWeight.bold,
+  //           ),
+  //         ),
+  //         content: SizedBox(
+  //           height: 200,
+  //           child: Column(children: [
+  //             Padding(
+  //               padding: const EdgeInsets.all(8.0),
+  //               child: Text(
+  //                 'Whats the sum of two number?',
+  //                 style: TextStyle(
+  //                   fontWeight: FontWeight.bold,
+  //                   fontSize: 20,
+  //                 ),
+  //               ),
+  //             ),
+  //             Padding(
+  //               padding: const EdgeInsets.all(8.0),
+  //               child: Text(
+  //                 '$firstNumber + $secondNumber',
+  //                 style: TextStyle(
+  //                   fontWeight: FontWeight.bold,
+  //                   fontSize: 20,
+  //                 ),
+  //               ),
+  //             ),
+  //             Padding(
+  //               padding: EdgeInsets.symmetric(horizontal: 4, vertical: 16),
+  //               child: TextField(
+  //                 keyboardType: TextInputType.number,
+  //                 maxLength: 3,
+  //                 onChanged: (text) {
+  //                   userAnswer = text;
+  //                 },
+  //                 decoration: InputDecoration(
+  //                   border: OutlineInputBorder(),
+  //                   hintText: 'Your Answer',
+  //                   errorText: _validateError ? 'Please input your answer.' : null,
+  //                 ),
+  //               ),
+  //             )
+  //           ]),
+  //         ),
+  //         actionsAlignment: MainAxisAlignment.center,
+  //         actions: [
+  //           ElevatedButton(
+  //             child: Text("Cancel"),
+  //             onPressed: () {
+  //               Navigator.of(context).pop(ViewUtils.CANCEL_CLICKED);
+  //             },
+  //             style: ElevatedButton.styleFrom(
+  //               backgroundColor: Colors.red,
+  //               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+  //               textStyle: TextStyle(
+  //                 fontSize: 15,
+  //                 fontWeight: FontWeight.bold,
+  //               ),
+  //             ),
+  //           ),
+  //           ElevatedButton(
+  //             child: Text('Buy Subscription'),
+  //             onPressed: () {
+  //               print(userAnswer);
+  //               if (userAnswer.isEmpty) {
+  //                 setState(() {
+  //                   _validateError = true;
+  //                 });
+  //               } else if (userAnswer.isNotEmpty) {
+  //                 bool isNumeric = num.tryParse(userAnswer) != null;
+  //                 if (!isNumeric) {
+  //                   setState(() {
+  //                     _validateError = true;
+  //                   });
+  //                 } else if (num.tryParse(userAnswer) != sumOfTwoNumber) {
+  //                   setState(() {
+  //                     _validateError = true;
+  //                   });
+  //                 } else {
+  //                   //We open subscripton logic here
+  //                   print('Ready to buy now');
+  //                 }
+  //               } else {
+  //                 _validateError = false;
+  //                 Navigator.of(context).pop(ViewUtils.OK_CLICKED);
+  //               }
+  //             },
+  //             style: ElevatedButton.styleFrom(
+  //               backgroundColor: theme.colorScheme.secondary,
+  //               foregroundColor: AppUtils.getContrastColor(theme.colorScheme.secondary),
+  //               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+  //               textStyle: TextStyle(
+  //                 fontSize: 15,
+  //                 fontWeight: FontWeight.bold,
+  //               ),
+  //             ),
+  //           ),
+  //         ],
+  //       );
+  //     },
+  //   );
+  // }
+
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
@@ -100,8 +227,20 @@ class _DashboardViewState extends State<DashboardView> with SingleTickerProvider
                     ),
                     Spacer(),
                     InkWell(
-                      onTap: () {
-                        // cec339cd print('No Ads');
+                      onTap: () async {
+                        String getRidOfAds = await ViewUtils.showAlert(
+                          context,
+                          'Get Rid of Ads',
+                          'With a small monthly subscribtion you can get rid of Ads. Are you ready to get rid of ads and enjoy the puzzles and memory excersie without inneruption.',
+                          'Yes! Remove Ads',
+                        );
+                        if (getRidOfAds == ViewUtils.OK_CLICKED) {
+                          Navigator.pushNamed(
+                            context,
+                            KeyUtil.gatewayQuestion,
+                            // ModalRoute.withName(KeyUtil.gatewayQuestion),
+                          );
+                        }
                       },
                       borderRadius: BorderRadius.circular(24),
                       child: Padding(

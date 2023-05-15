@@ -88,7 +88,9 @@ flutter {
 }
 
 dependencies {
+    def billingVersion = "6.0.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.android.billingclient:billing:$billingVersion"
 }
 
 apply plugin: 'com.google.firebase.crashlytics'

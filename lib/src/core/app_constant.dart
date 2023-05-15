@@ -41,6 +41,7 @@ class KeyUtil {
   static const String splash = 'Splash';
   static const String dashboard = 'Dashboard';
   static const String home = 'Home';
+  static const String gatewayQuestion = 'GatewayQuestion';
 
   static const String calculator = 'Calculator';
   static const String guessSign = 'GuessSign';
@@ -83,8 +84,7 @@ class KeyUtil {
       opacity: 0.12,
       icon: AppAssets.icTrainBrain,
       outlineIcon: AppAssets.icTrainBrainOutline,
-      subtitle:
-          "Enhance logical thinking, concentration and core cognitive skills.",
+      subtitle: "Enhance logical thinking, concentration and core cognitive skills.",
       title: "Train Your Brain",
       fillIconColor: Color(0xfff72585),
       outlineIconColor: Color(0xffB5179E),
