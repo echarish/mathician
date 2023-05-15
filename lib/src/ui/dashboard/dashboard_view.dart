@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mathgame/src/aap_payment/paywall.dart';
+import 'package:mathgame/src/aap_payment/revenuecat_payment_helper.dart';
+import 'package:mathgame/src/aap_payment/styles.dart';
 import 'package:mathgame/src/ads/ad_helper.dart';
 import 'package:mathgame/src/core/app_assets.dart';
 import 'package:mathgame/src/core/app_utils.dart';
@@ -235,11 +238,11 @@ class _DashboardViewState extends State<DashboardView> with SingleTickerProvider
                           'With a small monthly subscribtion you can get rid of Ads. Are you ready to get rid of ads and enjoy the puzzles and memory excersie without inneruption.',
                           'Yes! Remove Ads',
                         );
+
                         if (getRidOfAds == ViewUtils.OK_CLICKED) {
                           Navigator.pushNamed(
                             context,
                             KeyUtil.gatewayQuestion,
-                            // ModalRoute.withName(KeyUtil.gatewayQuestion),
                           );
                         }
                       },
@@ -368,13 +371,17 @@ class _DashboardViewState extends State<DashboardView> with SingleTickerProvider
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Expanded(
-                        child: Text("MathIcian by RightCode", style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.normal,fontSize: ViewUtils().getViewSize(14) )),
+                        child: Text("MathIcian by RightCode",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .copyWith(fontWeight: FontWeight.normal, fontSize: ViewUtils().getViewSize(14))),
                       ),
                       SizedBox(width: 12),
                       FutureBuilder<PackageInfo>(
                         future: PackageInfo.fromPlatform(),
-                        builder: (context, snapshot) =>
-                            Text("v${snapshot.data?.version}", style: Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: ViewUtils().getViewSize(14) )),
+                        builder: (context, snapshot) => Text("v${snapshot.data?.version}",
+                            style: Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: ViewUtils().getViewSize(14))),
                       ),
                     ],
                   ),

@@ -15,6 +15,6 @@ class AppUtils {
 
   static int twoDigitRandomNumber() {
     var random = Random();
-    return random.nextInt(50) + 10;
+    return random.nextInt(20) + 10;
   }
 }

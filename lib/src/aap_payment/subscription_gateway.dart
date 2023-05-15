@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:mathgame/src/aap_payment/paywall.dart';
+import 'package:mathgame/src/aap_payment/revenuecat_payment_helper.dart';
+import 'package:mathgame/src/aap_payment/styles.dart';
 import 'package:mathgame/src/core/app_utils.dart';
 import 'package:mathgame/src/core/view_utils.dart';
 
@@ -25,14 +29,31 @@ class _SubscriptionGatewayState extends State<SubscriptionGateway> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('Buy Subscription'),
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle(
+        systemNavigationBarColor: Theme.of(context).scaffoldBackgroundColor,
+        systemNavigationBarIconBrightness: Theme.of(context).brightness,
       ),
-      body: Padding(
-        padding: EdgeInsets.all(10),
-        child: _gatewayBody(),
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text(
+            'Buy Subscription',
+            style: Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: ViewUtils().getViewSize(28), fontWeight: FontWeight.bold),
+          ),
+          // toolbarHeight: 0,
+          // elevation: 0,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          foregroundColor: Theme.of(context).primaryColor,
+          iconTheme: Theme.of(context).iconTheme,
+        ),
+        body: SafeArea(
+          bottom: true,
+          child: Padding(
+            padding: EdgeInsets.all(10),
+            child: _gatewayBody(),
+          ),
+        ),
       ),
     );
   }
@@ -78,7 +99,7 @@ class _SubscriptionGatewayState extends State<SubscriptionGateway> {
         ),
         ElevatedButton(
           child: Text('Buy Subscription'),
-          onPressed: () {
+          onPressed: () async {
             print(userAnswer);
             if (userAnswer.isEmpty) {
               setState(() {
@@ -96,7 +117,25 @@ class _SubscriptionGatewayState extends State<SubscriptionGateway> {
                 });
               } else {
                 //We open subscripton logic here
-                print('Ready to buy now');
+                dynamic offering = await RevenueCatPaymentHelper().getPurchaseCuurentOfferings();
+
+                await showModalBottomSheet(
+                  useRootNavigator: true,
+                  isDismissible: true,
+                  isScrollControlled: true,
+                  backgroundColor: Theme.of(context).brightness == Brightness.light ? Colors.black : Colors.white,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
+                  ),
+                  context: context,
+                  builder: (BuildContext context) {
+                    return StatefulBuilder(builder: (BuildContext context, StateSetter setModalState) {
+                      return Paywall(
+                        offering: offering,
+                      );
+                    });
+                  },
+                );
               }
             } else {
               _validateError = false;

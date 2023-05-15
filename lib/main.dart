@@ -4,6 +4,7 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:mathgame/src/aap_payment/revenuecat_payment_helper.dart';
 import 'package:mathgame/src/ads/ad_helper.dart';
 
 import 'package:mathgame/src/ui/app/app.dart';
@@ -53,8 +54,9 @@ Future<void> main() async {
       ),
     ),
   );
-}
 
+  await RevenueCatPaymentHelper().init();
+}
 
 List<String> testDeviceIds = ["93CD3BE2B4B3737EFCF48F8FEBFC0502"];
 void _initGoogleMobileAds() async {
