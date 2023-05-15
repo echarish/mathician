@@ -37,9 +37,7 @@ class CorrectAnswerView extends StatelessWidget {
         onWillPop: () => Future.value(false),
         child: Scaffold(
           appBar: CommonAppBar<CorrectAnswerProvider>(colorTuple: colorTuple),
-          body: SafeArea(
-            bottom: true,
-            child: DialogListener<CorrectAnswerProvider>(
+          body: DialogListener<CorrectAnswerProvider>(
               gameCategoryType: GameCategoryType.CORRECT_ANSWER,
               child: Container(
                 margin: EdgeInsets.only(top: 24, left: 24, right: 24),
@@ -126,7 +124,7 @@ class CorrectAnswerView extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
+            
           ),
         ),
       ),

@@ -40,9 +40,7 @@ class MentalArithmeticView extends StatelessWidget {
         child: Scaffold(
           appBar:
               CommonAppBar<MentalArithmeticProvider>(colorTuple: colorTuple),
-          body: SafeArea(
-            bottom: true,
-            child: DialogListener<MentalArithmeticProvider>(
+          body: DialogListener<MentalArithmeticProvider>(
               gameCategoryType: GameCategoryType.MENTAL_ARITHMETIC,
               child: Container(
                 margin: EdgeInsets.only(top: 24, left: 24, right: 24),
@@ -151,7 +149,7 @@ class MentalArithmeticView extends StatelessWidget {
                     ),
                   ],
                 ),
-              ),
+              
             ),
           ),
         ),

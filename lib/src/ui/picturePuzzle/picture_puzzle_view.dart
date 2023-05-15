@@ -38,9 +38,7 @@ class PicturePuzzleView extends StatelessWidget {
         onWillPop: () => Future.value(false),
         child: Scaffold(
           appBar: CommonAppBar<PicturePuzzleProvider>(colorTuple: colorTuple),
-          body: SafeArea(
-            bottom: true,
-            child: DialogListener<PicturePuzzleProvider>(
+          body:  DialogListener<PicturePuzzleProvider>(
               gameCategoryType: GameCategoryType.PICTURE_PUZZLE,
               child: Container(
                 margin: EdgeInsets.only(top: 24, left: 24, right: 24),
@@ -140,7 +138,7 @@ class PicturePuzzleView extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
+            
           ),
         ),
       ),

@@ -36,76 +36,65 @@ class SquareRootView extends StatelessWidget {
         onWillPop: () => Future.value(false),
         child: Scaffold(
           appBar: CommonAppBar<SquareRootProvider>(colorTuple: colorTuple),
-          body: SafeArea(
-            bottom: true,
-            child: DialogListener<SquareRootProvider>(
-              gameCategoryType: GameCategoryType.SQUARE_ROOT,
-              child: Container(
-                margin: EdgeInsets.only(top: 24, left: 24, right: 24),
-                constraints: BoxConstraints.expand(),
-                child: Column(
-                  children: <Widget>[
-                    CommonInfoTextView<SquareRootProvider>(
-                        gameCategoryType: GameCategoryType.SQUARE_ROOT),
-                    Expanded(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+          body: DialogListener<SquareRootProvider>(
+            gameCategoryType: GameCategoryType.SQUARE_ROOT,
+            child: Container(
+              margin: EdgeInsets.only(top: 24, left: 24, right: 24),
+              constraints: BoxConstraints.expand(),
+              child: Column(
+                children: <Widget>[
+                  CommonInfoTextView<SquareRootProvider>(gameCategoryType: GameCategoryType.SQUARE_ROOT),
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(
+                          AppAssets.icRoot,
+                          height: 40,
+                          color: colorTuple.item1,
+                        ),
+                        Selector<SquareRootProvider, SquareRoot>(
+                            selector: (p0, p1) => p1.currentState,
+                            builder: (context, currentState, child) {
+                              return Text(
+                                currentState.question,
+                                style: Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: 40),
+                              );
+                            }),
+                      ],
+                    ),
+                  ),
+                  Selector<SquareRootProvider, SquareRoot>(
+                    selector: (p0, p1) => p1.currentState,
+                    builder: (context, currentState, child) {
+                      return GridView(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                        padding: const EdgeInsets.only(bottom: 24),
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
                         children: [
-                          SvgPicture.asset(
-                            AppAssets.icRoot,
-                            height: 40,
-                            color: colorTuple.item1,
-                          ),
-                          Selector<SquareRootProvider, SquareRoot>(
-                              selector: (p0, p1) => p1.currentState,
-                              builder: (context, currentState, child) {
-                                return Text(
-                                  currentState.question,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .subtitle2!
-                                      .copyWith(fontSize: 40),
-                                );
-                              }),
+                          ...[
+                            currentState.firstAns,
+                            currentState.secondAns,
+                            currentState.thirdAns,
+                            currentState.fourthAns,
+                          ].map(
+                            (e) {
+                              return CommonNumberButton(
+                                text: e,
+                                onTab: () {
+                                  context.read<SquareRootProvider>().checkResult(e);
+                                },
+                                colorTuple: colorTuple,
+                                fontSize: 48,
+                              );
+                            },
+                          )
                         ],
-                      ),
-                    ),
-                    Selector<SquareRootProvider, SquareRoot>(
-                      selector: (p0, p1) => p1.currentState,
-                      builder: (context, currentState, child) {
-                        return GridView(
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2),
-                          padding: const EdgeInsets.only(bottom: 24),
-                          shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
-                          children: [
-                            ...[
-                              currentState.firstAns,
-                              currentState.secondAns,
-                              currentState.thirdAns,
-                              currentState.fourthAns,
-                            ].map(
-                              (e) {
-                                return CommonNumberButton(
-                                  text: e,
-                                  onTab: () {
-                                    context
-                                        .read<SquareRootProvider>()
-                                        .checkResult(e);
-                                  },
-                                  colorTuple: colorTuple,
-                                  fontSize: 48,
-                                );
-                              },
-                            )
-                          ],
-                        );
-                      },
-                    ),
-                  ],
-                ),
+                      );
+                    },
+                  ),
+                ],
               ),
             ),
           ),

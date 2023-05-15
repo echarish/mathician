@@ -33,9 +33,7 @@ class MathPairsView extends StatelessWidget {
         onWillPop: () => Future.value(false),
         child: Scaffold(
           appBar: CommonAppBar<MathPairsProvider>(colorTuple: colorTuple),
-          body: SafeArea(
-            bottom: true,
-            child: DialogListener<MathPairsProvider>(
+          body: DialogListener<MathPairsProvider>(
               gameCategoryType: GameCategoryType.MATH_PAIRS,
               child: Container(
                 margin: EdgeInsets.only(top: 24, left: 24, right: 24),
@@ -70,7 +68,7 @@ class MathPairsView extends StatelessWidget {
                     ),
                   ],
                 ),
-              ),
+              
             ),
           ),
         ),

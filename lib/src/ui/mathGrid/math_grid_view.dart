@@ -33,9 +33,7 @@ class MathGridView extends StatelessWidget {
         onWillPop: () => Future.value(false),
         child: Scaffold(
           appBar: CommonAppBar<MathGridProvider>(colorTuple: colorTuple),
-          body: SafeArea(
-            bottom: true,
-            child: DialogListener<MathGridProvider>(
+          body: DialogListener<MathGridProvider>(
               gameCategoryType: GameCategoryType.MATH_GRID,
               child: Container(
                 margin: EdgeInsets.all(24),
@@ -106,7 +104,7 @@ class MathGridView extends StatelessWidget {
                 ),
               ),
             ),
-          ),
+          
         ),
       ),
     );

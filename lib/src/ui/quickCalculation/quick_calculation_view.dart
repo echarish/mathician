@@ -40,9 +40,7 @@ class QuickCalculationView extends StatelessWidget {
         child: Scaffold(
           appBar:
               CommonAppBar<QuickCalculationProvider>(colorTuple: colorTuple),
-          body: SafeArea(
-            bottom: true,
-            child: DialogListener<QuickCalculationProvider>(
+          body: DialogListener<QuickCalculationProvider>(
               gameCategoryType: GameCategoryType.QUICK_CALCULATION,
               child: Container(
                 margin: EdgeInsets.only(top: 24, left: 24, right: 24),
@@ -189,7 +187,7 @@ class QuickCalculationView extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
+            
           ),
         ),
       ),

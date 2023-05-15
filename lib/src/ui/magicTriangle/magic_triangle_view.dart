@@ -40,9 +40,7 @@ class MagicTriangleView extends StatelessWidget {
         onWillPop: () => Future.value(false),
         child: Scaffold(
           appBar: CommonAppBar<MagicTriangleProvider>(colorTuple: colorTuple),
-          body: SafeArea(
-            bottom: true,
-            child: DialogListener<MagicTriangleProvider>(
+          body: DialogListener<MagicTriangleProvider>(
               gameCategoryType: GameCategoryType.MAGIC_TRIANGLE,
               child: Container(
                 margin: EdgeInsets.all(24),
@@ -120,7 +118,7 @@ class MagicTriangleView extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
+            
           ),
         ),
       ),

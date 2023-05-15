@@ -193,9 +193,7 @@ class _DashboardViewState extends State<DashboardView> with SingleTickerProvider
           elevation: 0,
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         ),
-        body: SafeArea(
-          bottom: true,
-          child: Padding(
+        body: Padding(
             padding: const EdgeInsets.all(12),
             child: Column(
               children: <Widget>[
@@ -380,7 +378,7 @@ class _DashboardViewState extends State<DashboardView> with SingleTickerProvider
                 ),
               ],
             ),
-          ),
+          
         ),
       ),
     );
