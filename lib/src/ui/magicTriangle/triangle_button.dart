@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 import 'package:mathgame/src/data/models/magic_triangle.dart';
 import 'package:mathgame/src/ui/magicTriangle/magic_triangle_provider.dart';
 import 'package:provider/provider.dart';
@@ -34,8 +35,8 @@ class TriangleButton extends StatelessWidget {
           },
           borderRadius: BorderRadius.circular(24),
           child: Container(
-            height: 58,
-            width: 58,
+            height: ViewUtils().getViewSize(58),
+            width: ViewUtils().getViewSize(58),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(24)),
               border: Border.all(color: colorTuple.item1),
@@ -43,10 +44,7 @@ class TriangleButton extends StatelessWidget {
             alignment: Alignment.center,
             child: Text(
               digit.value,
-              style: Theme.of(context)
-                  .textTheme
-                  .subtitle1!
-                  .copyWith(fontSize: 24, color: colorTuple.item1),
+              style: Theme.of(context).textTheme.subtitle1!.copyWith(fontSize: ViewUtils().getViewSize(34), color: colorTuple.item1),
             ),
           ),
         ),

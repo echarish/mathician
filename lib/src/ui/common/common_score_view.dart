@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 
 class CommonScoreView extends StatefulWidget {
   final int currentScore;
@@ -102,7 +103,7 @@ class _CommonScoreViewState extends State<CommonScoreView>
                   : widget.oldScore.toString(),
               // key: ValueKey<int>(widget.score),
               style:
-                  Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: 24),
+                  Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: ViewUtils().getViewSize(24)),
             ),
           ),
           position: inAnimation,
@@ -116,7 +117,7 @@ class _CommonScoreViewState extends State<CommonScoreView>
                   : widget.oldScore.toString(),
               // key: ValueKey<int>(widget.score),
               style:
-                  Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: 24),
+                  Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: ViewUtils().getViewSize(24)),
             ),
           ),
           position: outAnimation,

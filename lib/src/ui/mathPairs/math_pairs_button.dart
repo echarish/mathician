@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mathgame/src/core/color_scheme.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 import 'package:mathgame/src/data/models/math_pairs.dart';
 import 'package:mathgame/src/ui/mathPairs/math_pairs_provider.dart';
 import 'package:provider/provider.dart';
@@ -29,18 +30,14 @@ class MathPairsButton extends StatelessWidget {
         child: InkWell(
           onTap: mathPairs.isVisible
               ? () {
-                  context
-                      .read<MathPairsProvider>()
-                      .checkResult(mathPairs, index);
+                  context.read<MathPairsProvider>().checkResult(mathPairs, index);
                 }
               : null,
           borderRadius: BorderRadius.all(Radius.circular(24)),
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(24)),
-              border: mathPairs.isActive
-                  ? null
-                  : Border.all(color: colorTuple.item1),
+              border: mathPairs.isActive ? null : Border.all(color: colorTuple.item1),
               gradient: mathPairs.isActive
                   ? LinearGradient(
                       colors: [colorTuple.item1, colorTuple.item2],
@@ -55,10 +52,7 @@ class MathPairsButton extends StatelessWidget {
               child: Text(
                 mathPairs.text,
                 style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                    fontSize: 24,
-                    color: mathPairs.isActive
-                        ? Theme.of(context).colorScheme.baseColor
-                        : colorTuple.item1),
+                    fontSize: ViewUtils().getViewSize(24), color: mathPairs.isActive ? Theme.of(context).colorScheme.baseColor : colorTuple.item1),
               ),
             ),
           ),

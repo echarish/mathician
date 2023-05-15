@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mathgame/src/ads/ad_helper.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 
 class CommonGameExitDialogView extends StatelessWidget {
   final double score;
@@ -19,12 +20,12 @@ class CommonGameExitDialogView extends StatelessWidget {
         Text(
           "Are you sure you want to quit the game?",
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 18),
+          style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: ViewUtils().getViewSize(18)),
         ),
         SizedBox(height: 24),
         Text(
           "Your current score is $score",
-          style: Theme.of(context).textTheme.caption!.copyWith(fontSize: 16),
+          style: Theme.of(context).textTheme.caption!.copyWith(fontSize: ViewUtils().getViewSize(16)),
         ),
         SizedBox(height: 24),
         Row(
@@ -44,7 +45,7 @@ class CommonGameExitDialogView extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(12),
                     child: Container(
-                        height: 44,
+                        height: ViewUtils().getViewSize(44),
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
@@ -53,7 +54,8 @@ class CommonGameExitDialogView extends StatelessWidget {
                             end: Alignment.bottomCenter,
                           ),
                         ),
-                        child: Text("YES", style: Theme.of(context).textTheme.subtitle1!.copyWith(fontSize: 18, color: Colors.white))),
+                        child: Text("YES",
+                            style: Theme.of(context).textTheme.subtitle1!.copyWith(fontSize: ViewUtils().getViewSize(18), color: Colors.white))),
                   ),
                 ),
               ),
@@ -73,8 +75,8 @@ class CommonGameExitDialogView extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                   child: Container(
                     alignment: Alignment.center,
-                    height: 44,
-                    width: 44,
+                    height: ViewUtils().getViewSize(44),
+                    width: ViewUtils().getViewSize(44),
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [Color(0xffF48C06), Color(0xffD00000)],
@@ -85,6 +87,7 @@ class CommonGameExitDialogView extends StatelessWidget {
                     child: Icon(
                       Icons.play_arrow,
                       color: Colors.white,
+                      size: ViewUtils().getViewSize(18),
                     ),
                   ),
                 ),

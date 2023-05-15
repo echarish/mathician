@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:math';
 import 'package:mathgame/src/core/app_constant.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 import 'package:mathgame/src/ui/splash/animated_grid_item_view.dart';
 import 'package:tuple/tuple.dart';
 
@@ -101,7 +102,7 @@ class GridItemView extends StatelessWidget {
                                 style: TextStyle(
                                   color: Colors.white24.withOpacity(0.25),
                                   fontFamily: "Poppins",
-                                  fontSize: 16,
+                                  fontSize: ViewUtils().getViewSize(16),
                                   fontWeight: FontWeight.w400,
                                 ),
                               )
@@ -110,7 +111,7 @@ class GridItemView extends StatelessWidget {
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.w900,
-                                  fontSize: 28,
+                                  fontSize: ViewUtils().getViewSize(28),
                                   fontFamily: "Poppins",
                                 ),
                               ),
@@ -143,7 +144,7 @@ class GridItemView extends StatelessWidget {
                             style: TextStyle(
                               color: Colors.white24.withOpacity(0.5),
                               fontFamily: "Poppins",
-                              fontSize: 16,
+                              fontSize: ViewUtils().getViewSize(16),
                               fontWeight: FontWeight.w400,
                             ),
                           ),

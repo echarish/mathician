@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 import 'package:mathgame/src/data/models/picture_puzzle.dart';
 import 'package:mathgame/src/ui/picturePuzzle/circle_shape.dart';
 import 'package:mathgame/src/ui/picturePuzzle/picture_puzzle_answer_button.dart';
@@ -22,33 +23,29 @@ class PicturePuzzleButton extends StatelessWidget {
     switch (picturePuzzleShape.type) {
       case PicturePuzzleQuestionItemType.shape:
         return CustomPaint(
-          painter: picturePuzzleShape.picturePuzzleShapeType ==
-                  PicturePuzzleShapeType.CIRCLE
+          painter: picturePuzzleShape.picturePuzzleShapeType == PicturePuzzleShapeType.CIRCLE
               ? CircleShape(shapeColor, 1)
-              : (picturePuzzleShape.picturePuzzleShapeType ==
-                      PicturePuzzleShapeType.TRIANGLE
+              : (picturePuzzleShape.picturePuzzleShapeType == PicturePuzzleShapeType.TRIANGLE
                   ? TriangleShape(shapeColor, 1)
                   : SquareShape(shapeColor, 1)),
-          size: Size(38, 38),
+          size: Size(ViewUtils().getViewSize(38), ViewUtils().getViewSize(38)),
         );
       case PicturePuzzleQuestionItemType.sign:
         return Container(
           alignment: Alignment.center,
-          width: 38,
+          width: ViewUtils().getViewSize(38),
           child: Text(
             picturePuzzleShape.text,
-            style:
-                Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: 30),
+            style: Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: ViewUtils().getViewSize(30)),
           ),
         );
       case PicturePuzzleQuestionItemType.hint:
         return Container(
           alignment: Alignment.center,
-          width: 56,
+          width: ViewUtils().getViewSize(56),
           child: Text(
             picturePuzzleShape.text,
-            style:
-                Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: 24),
+            style: Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: ViewUtils().getViewSize(24)),
           ),
         );
       case PicturePuzzleQuestionItemType.answer:

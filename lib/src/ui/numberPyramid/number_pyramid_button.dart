@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mathgame/src/core/color_scheme.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 import 'package:mathgame/src/data/models/number_pyramid.dart';
 import 'package:mathgame/src/ui/numberPyramid/number_pyramid_provider.dart';
 import 'package:provider/provider.dart';
@@ -34,11 +35,7 @@ class PyramidNumberButton extends StatelessWidget {
         decoration: BoxDecoration(
           color: numPyramidCellModel.isHint
               ? null
-              : (numPyramidCellModel.isDone
-                  ? (numPyramidCellModel.isCorrect
-                      ? Colors.transparent
-                      : Colors.redAccent)
-                  : Colors.transparent),
+              : (numPyramidCellModel.isDone ? (numPyramidCellModel.isCorrect ? Colors.transparent : Colors.redAccent) : Colors.transparent),
           gradient: numPyramidCellModel.isHint
               ? LinearGradient(
                   colors: [colorTuple.item1, colorTuple.item2],
@@ -47,9 +44,7 @@ class PyramidNumberButton extends StatelessWidget {
                 )
               : null,
           border: Border.all(
-            color: numPyramidCellModel.isActive
-                ? colorTuple.item1
-                : Theme.of(context).colorScheme.triangleLineColor,
+            color: numPyramidCellModel.isActive ? colorTuple.item1 : Theme.of(context).colorScheme.triangleLineColor,
             width: 1,
           ),
           borderRadius: BorderRadius.only(
@@ -58,13 +53,11 @@ class PyramidNumberButton extends StatelessWidget {
           ),
         ),
         child: Text(
-          numPyramidCellModel.isHidden
-              ? numPyramidCellModel.text
-              : numPyramidCellModel.numberOnCell.toString(),
-          style: Theme.of(context).textTheme.subtitle2!.copyWith(
-              color: numPyramidCellModel.isHint
-                  ?  Colors.white
-                  : colorTuple.item1),
+          numPyramidCellModel.isHidden ? numPyramidCellModel.text : numPyramidCellModel.numberOnCell.toString(),
+          style: Theme.of(context)
+              .textTheme
+              .subtitle2!
+              .copyWith(fontSize: ViewUtils().getViewSize(8), color: numPyramidCellModel.isHint ? Colors.white : colorTuple.item1),
         ),
       ),
     );

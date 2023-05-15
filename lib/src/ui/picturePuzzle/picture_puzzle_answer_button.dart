@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mathgame/src/core/color_scheme.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 import 'package:mathgame/src/data/models/picture_puzzle.dart';
 import 'package:mathgame/src/ui/common/common_neumorphic_view.dart';
 import 'package:mathgame/src/ui/common/common_wrong_answer_animation_view.dart';
@@ -33,10 +34,8 @@ class PicturePuzzleAnswerButton extends StatelessWidget {
           builder: (context, value, child) => Text(
             value == "" ? "?" : value,
             style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                  fontSize: 24,
-                  color: value == ""
-                      ? Theme.of(context).colorScheme.crossLightColor
-                      : colorTuple.item1,
+                  fontSize: ViewUtils().getViewSize(24),
+                  color: value == "" ? Theme.of(context).colorScheme.crossLightColor : colorTuple.item1,
                 ),
           ),
         ),

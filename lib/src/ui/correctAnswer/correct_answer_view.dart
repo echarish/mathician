@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 import 'package:mathgame/src/data/models/correct_answer.dart';
 import 'package:mathgame/src/ui/app/theme_provider.dart';
 import 'package:mathgame/src/ui/common/common_number_button.dart';
@@ -46,8 +47,7 @@ class CorrectAnswerView extends StatelessWidget {
                 constraints: BoxConstraints.expand(),
                 child: Column(
                   children: <Widget>[
-                    CommonInfoTextView<CorrectAnswerProvider>(
-                        gameCategoryType: GameCategoryType.CORRECT_ANSWER),
+                    CommonInfoTextView<CorrectAnswerProvider>(gameCategoryType: GameCategoryType.CORRECT_ANSWER),
                     Expanded(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -57,10 +57,8 @@ class CorrectAnswerView extends StatelessWidget {
                               builder: (context, currentState, child) {
                                 return CorrectAnswerQuestionView(
                                   question: currentState.question,
-                                  questionView: Selector<CorrectAnswerProvider,
-                                      Tuple2<double, double>>(
-                                    selector: (p0, p1) =>
-                                        Tuple2(p1.currentScore, p1.oldScore),
+                                  questionView: Selector<CorrectAnswerProvider, Tuple2<double, double>>(
+                                    selector: (p0, p1) => Tuple2(p1.currentScore, p1.oldScore),
                                     builder: (context, tuple2, child) {
                                       return CommonWrongAnswerAnimationView(
                                         currentScore: tuple2.item1.toInt(),
@@ -69,8 +67,7 @@ class CorrectAnswerView extends StatelessWidget {
                                       );
                                     },
                                     child: CommonNeumorphicView(
-                                      child: Selector<CorrectAnswerProvider,
-                                              String>(
+                                      child: Selector<CorrectAnswerProvider, String>(
                                           selector: (p0, p1) => p1.result,
                                           builder: (context, result, child) {
                                             return Text(
@@ -78,9 +75,7 @@ class CorrectAnswerView extends StatelessWidget {
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .subtitle2!
-                                                  .copyWith(
-                                                      fontSize: 30,
-                                                      color: colorTuple.item1),
+                                                  .copyWith(fontSize: ViewUtils().getViewSize(30), color: colorTuple.item1),
                                             );
                                           }),
                                     ),
@@ -94,9 +89,7 @@ class CorrectAnswerView extends StatelessWidget {
                         selector: (p0, p1) => p1.currentState,
                         builder: (context, currentState, child) {
                           return GridView(
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2),
+                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
                             padding: const EdgeInsets.only(bottom: 24),
                             shrinkWrap: true,
                             physics: NeverScrollableScrollPhysics(),
@@ -111,12 +104,10 @@ class CorrectAnswerView extends StatelessWidget {
                                   return CommonNumberButton(
                                     text: e,
                                     onTab: () {
-                                      context
-                                          .read<CorrectAnswerProvider>()
-                                          .checkResult(e);
+                                      context.read<CorrectAnswerProvider>().checkResult(e);
                                     },
                                     colorTuple: colorTuple,
-                                    fontSize: 48,
+                                    fontSize: ViewUtils().getViewSize(48),
                                   );
                                 },
                               )

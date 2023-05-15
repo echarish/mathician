@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mathgame/src/core/color_scheme.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 import 'package:mathgame/src/ui/common/common_tab_animation_view.dart';
 
 class CommonClearButton extends StatelessWidget {
@@ -13,7 +14,7 @@ class CommonClearButton extends StatelessWidget {
     required this.onTab,
     required this.text,
     this.height = 112,
-    this.fontSize = 14,
+    this.fontSize = 18,
   }) : super(key: key);
 
   @override
@@ -35,7 +36,7 @@ class CommonClearButton extends StatelessWidget {
             child: Text(
               text,
               style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                    fontSize: fontSize,
+                    fontSize: ViewUtils().getViewSize(fontSize),
                     color: Theme.of(context).colorScheme.crossColor,
                   ),
             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 import 'package:mathgame/src/data/models/mental_arithmetic.dart';
 
 class MentalArithmeticQuestionView extends StatefulWidget {
@@ -119,7 +120,7 @@ class _MentalArithmeticQuestionViewState
                 child: Text(
                   index != 3 ? widget.currentState.questionList[index] : "",
                   style: TextStyle(
-                    fontSize: 30.0,
+                    fontSize: ViewUtils().getViewSize(30),
                     fontWeight: FontWeight.w700,
                   ),
                 ),
@@ -137,7 +138,7 @@ class _MentalArithmeticQuestionViewState
                 child: Text(
                   index == 0 ? "" : widget.currentState.questionList[index - 1],
                   style: TextStyle(
-                    fontSize: 30.0,
+                    fontSize: ViewUtils().getViewSize(30),
                     fontWeight: FontWeight.w700,
                   ),
                 ),

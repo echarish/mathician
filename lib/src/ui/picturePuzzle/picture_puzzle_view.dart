@@ -47,8 +47,7 @@ class PicturePuzzleView extends StatelessWidget {
                 constraints: BoxConstraints.expand(),
                 child: Column(
                   children: <Widget>[
-                    CommonInfoTextView<PicturePuzzleProvider>(
-                        gameCategoryType: GameCategoryType.PICTURE_PUZZLE),
+                    CommonInfoTextView<PicturePuzzleProvider>(gameCategoryType: GameCategoryType.PICTURE_PUZZLE),
                     Expanded(
                       flex: 5,
                       child: Selector<PicturePuzzleProvider, PicturePuzzle>(
@@ -58,11 +57,9 @@ class PicturePuzzleView extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: provider.list.mapIndexed((index, list) {
                                 return Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: index == 3 ? 6 : 12),
+                                  padding: EdgeInsets.symmetric(vertical: index == 3 ? 6 : 12),
                                   child: Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: list.shapeList.map((subList) {
                                       return PicturePuzzleButton(
@@ -81,53 +78,32 @@ class PicturePuzzleView extends StatelessWidget {
                       flex: 5,
                       child: LayoutBuilder(builder: (context, constraints) {
                         return GridView(
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
+                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 3,
-                            childAspectRatio: (constraints.maxWidth / 3) /
-                                ((constraints.maxHeight - 24) / 4),
+                            childAspectRatio: (constraints.maxWidth / 3) / ((constraints.maxHeight - 24) / 4),
                           ),
                           padding: const EdgeInsets.only(bottom: 24),
                           shrinkWrap: true,
                           physics: NeverScrollableScrollPhysics(),
                           children: [
-                            ...[
-                              "7",
-                              "8",
-                              "9",
-                              "4",
-                              "5",
-                              "6",
-                              "1",
-                              "2",
-                              "3",
-                              "Clear",
-                              "0",
-                              "Back"
-                            ].map(
+                            ...["7", "8", "9", "4", "5", "6", "1", "2", "3", "Clear", "0", "Back"].map(
                               (e) {
                                 if (e == "Clear") {
                                   return CommonClearButton(
                                       text: "Clear",
                                       onTab: () {
-                                        context
-                                            .read<PicturePuzzleProvider>()
-                                            .clearResult();
+                                        context.read<PicturePuzzleProvider>().clearResult();
                                       });
                                 } else if (e == "Back") {
                                   return CommonBackButton(onTab: () {
-                                    context
-                                        .read<PicturePuzzleProvider>()
-                                        .backPress();
+                                    context.read<PicturePuzzleProvider>().backPress();
                                   });
                                 } else {
                                   return CommonTextButton(
                                     text: e,
                                     colorTuple: colorTuple,
                                     onTab: () {
-                                      context
-                                          .read<PicturePuzzleProvider>()
-                                          .checkGameResult(e);
+                                      context.read<PicturePuzzleProvider>().checkGameResult(e);
                                     },
                                   );
                                 }

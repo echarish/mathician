@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 import 'package:mathgame/src/data/models/quick_calculation.dart';
 
 class QuickCalculationQuestionView extends StatefulWidget {
@@ -14,12 +15,10 @@ class QuickCalculationQuestionView extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _QuickCalculationQuestionViewState createState() =>
-      _QuickCalculationQuestionViewState();
+  _QuickCalculationQuestionViewState createState() => _QuickCalculationQuestionViewState();
 }
 
-class _QuickCalculationQuestionViewState
-    extends State<QuickCalculationQuestionView> with TickerProviderStateMixin {
+class _QuickCalculationQuestionViewState extends State<QuickCalculationQuestionView> with TickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<AlignmentGeometry> _animation;
   late Animation<TextStyle> _textStyleAnimation;
@@ -46,11 +45,11 @@ class _QuickCalculationQuestionViewState
 
     _textStyleAnimation = TextStyleTween(
       begin: TextStyle(
-        fontSize: 16.0,
+        fontSize: ViewUtils().getViewSize(16.0),
         fontWeight: FontWeight.w200,
       ),
       end: TextStyle(
-        fontSize: 30.0,
+        fontSize: ViewUtils().getViewSize(30.0),
         fontWeight: FontWeight.w700,
       ),
     ).animate(CurvedAnimation(
@@ -113,8 +112,7 @@ class _QuickCalculationQuestionViewState
             opacity: _opacityAnimationOut,
             child: Text(
               widget.previousCurrentState?.question ?? "",
-              style:
-                  Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: 30),
+              style: Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: ViewUtils().getViewSize(30)),
             ),
           ),
         ),
@@ -124,8 +122,7 @@ class _QuickCalculationQuestionViewState
             opacity: _opacityAnimationIn,
             child: Text(
               widget.nextCurrentState.question,
-              style:
-                  Theme.of(context).textTheme.caption!.copyWith(fontSize: 16),
+              style: Theme.of(context).textTheme.caption!.copyWith(fontSize: ViewUtils().getViewSize(30)),
             ),
           ),
         ),

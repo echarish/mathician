@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mathgame/src/core/app_constant.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 import 'package:mathgame/src/ui/app/theme_provider.dart';
 import 'package:mathgame/src/ui/calculator/calculator_provider.dart';
 import 'package:mathgame/src/ui/common/common_back_button.dart';
@@ -60,7 +61,7 @@ class CalculatorView extends StatelessWidget {
                               style: Theme.of(context)
                                   .textTheme
                                   .subtitle2!
-                                  .copyWith(fontSize: 30),
+                                  .copyWith(fontSize: ViewUtils().getViewSize(30)),
                             );
                           }),
                         ],
@@ -87,7 +88,7 @@ class CalculatorView extends StatelessWidget {
                                   .textTheme
                                   .subtitle2!
                                   .copyWith(
-                                  fontSize: 30,
+                                  fontSize: ViewUtils().getViewSize(30),
                                   color: colorTuple.item1),
                             );
                           },

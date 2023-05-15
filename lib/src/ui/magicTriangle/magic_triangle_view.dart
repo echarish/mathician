@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mathgame/src/core/color_scheme.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 import 'package:mathgame/src/ui/app/theme_provider.dart';
 import 'package:mathgame/src/ui/common/common_app_bar.dart';
 import 'package:mathgame/src/ui/common/common_info_text_view.dart';
@@ -49,9 +50,8 @@ class MagicTriangleView extends StatelessWidget {
                 constraints: BoxConstraints.expand(),
                 child: Column(
                   children: <Widget>[
-                    CommonInfoTextView<MagicTriangleProvider>(
-                        gameCategoryType: GameCategoryType.MAGIC_TRIANGLE),
-                    SizedBox(height: 16),
+                    CommonInfoTextView<MagicTriangleProvider>(gameCategoryType: GameCategoryType.MAGIC_TRIANGLE),
+                    SizedBox(height: ViewUtils().getViewSize(16)),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -60,15 +60,12 @@ class MagicTriangleView extends StatelessWidget {
                             builder: (context, answer, child) {
                               return Text(
                                 answer.toString(),
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .subtitle2!
-                                    .copyWith(fontSize: 30),
+                                style: Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: ViewUtils().getViewSize(30)),
                               );
                             }),
                       ],
                     ),
-                    SizedBox(height: 16),
+                    SizedBox(height: ViewUtils().getViewSize(16)),
                     Expanded(
                       child: LayoutBuilder(builder: (context, constraints) {
                         return Stack(
@@ -76,9 +73,7 @@ class MagicTriangleView extends StatelessWidget {
                           children: <Widget>[
                             CustomPaint(
                               painter: TrianglePainter(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .triangleLineColor,
+                                color: Theme.of(context).colorScheme.triangleLineColor,
                                 radius: radius,
                                 padding: padding,
                               ),
@@ -110,12 +105,11 @@ class MagicTriangleView extends StatelessWidget {
                         );
                       }),
                     ),
+                    SizedBox(height: ViewUtils().getViewSize(8)),
                     Selector<MagicTriangleProvider, bool>(
                         selector: (p0, p1) => p1.currentState.is3x3,
                         builder: (context, is3x3, child) {
-                          return is3x3
-                              ? TriangleInput3x3(colorTuple: colorTuple)
-                              : TriangleInput4x4(colorTuple: colorTuple);
+                          return is3x3 ? TriangleInput3x3(colorTuple: colorTuple) : TriangleInput4x4(colorTuple: colorTuple);
                         }),
                   ],
                 ),

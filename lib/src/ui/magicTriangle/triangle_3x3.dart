@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 import 'package:mathgame/src/ui/magicTriangle/magic_triangle_provider.dart';
 import 'package:mathgame/src/ui/magicTriangle/triangle_input_button.dart';
 import 'package:provider/provider.dart';
@@ -40,8 +41,8 @@ class Triangle3x3 extends StatelessWidget {
             width: (radius * 2),
           ), // first
           Positioned(
-            top: triangleHeight / 2 - radius,
-            left: (triangleWidth - ((radius + padding) * 2)) / 4 + padding,
+            top: ViewUtils().getMoveTopForTab(triangleHeight / 2 - radius),
+            left: ViewUtils().getMoveLeftForTab((triangleWidth - ((radius + padding) * 2)) / 4 + padding),
             child: TriangleInputButton(
               input: magicTriangleProvider.currentState.listTriangle[1],
               index: 1,
@@ -51,8 +52,8 @@ class Triangle3x3 extends StatelessWidget {
             width: (radius * 2),
           ), // second one
           Positioned(
-            top: triangleHeight / 2 - radius,
-            right: (triangleWidth - ((radius + padding) * 2)) / 4 + padding,
+            top: ViewUtils().getMoveTopForTab(triangleHeight / 2 - radius),
+            right: ViewUtils().getMoveRightForTab((triangleWidth - ((radius + padding) * 2)) / 4 + padding),
             child: TriangleInputButton(
               input: magicTriangleProvider.currentState.listTriangle[2],
               index: 2,

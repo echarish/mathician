@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 import 'package:mathgame/src/data/models/magic_triangle.dart';
 import 'package:mathgame/src/ui/common/common_neumorphic_view.dart';
 import 'package:mathgame/src/ui/magicTriangle/magic_triangle_provider.dart';
@@ -44,7 +45,7 @@ class TriangleInputButton extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .subtitle2!
-                .copyWith(fontSize: 30, color: Colors.white),
+                .copyWith(fontSize: ViewUtils().getViewSize(30), color: Colors.white),
           ),
         ),
       ),

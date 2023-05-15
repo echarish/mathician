@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 import 'package:mathgame/src/data/models/correct_answer.dart';
 
 class CorrectAnswerQuestionView extends StatelessWidget {
@@ -19,56 +20,46 @@ class CorrectAnswerQuestionView extends StatelessWidget {
             ? questionView
             : Text(
                 question.firstOperand.value,
-                style: Theme.of(context)
-                    .textTheme
-                    .subtitle2!
-                    .copyWith(fontSize: 30),
+                style: Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: ViewUtils().getViewSize(30)),
               ),
         SizedBox(width: 14),
         Text(
           question.firstOperator,
-          style: Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: 30),
+          style: Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: ViewUtils().getViewSize(30)),
         ),
         SizedBox(width: 14),
         question.secondOperand.isQuestionMark
             ? questionView
             : Text(
-          question.secondOperand.value,
-          style: Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: 30),
-        ),
+                question.secondOperand.value,
+                style: Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: ViewUtils().getViewSize(30)),
+              ),
         if (question.secondOperator != null)
           Row(
             children: [
               SizedBox(width: 14),
               Text(
                 question.secondOperator!,
-                style: Theme.of(context)
-                    .textTheme
-                    .subtitle2!
-                    .copyWith(fontSize: 30),
+                style: Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: ViewUtils().getViewSize(30)),
               ),
               SizedBox(width: 14),
               question.thirdOperand!.isQuestionMark
                   ? questionView
-                  :
-              Text(
-                question.thirdOperand!.value,
-                style: Theme.of(context)
-                    .textTheme
-                    .subtitle2!
-                    .copyWith(fontSize: 30),
-              ),
+                  : Text(
+                      question.thirdOperand!.value,
+                      style: Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: ViewUtils().getViewSize(30)),
+                    ),
             ],
           ),
         SizedBox(width: 6),
         Text(
           "=",
-          style: Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: 30),
+          style: Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: ViewUtils().getViewSize(30)),
         ),
         SizedBox(width: 6),
         Text(
           question.answer.toString(),
-          style: Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: 30),
+          style: Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: ViewUtils().getViewSize(30)),
         ),
       ],
     );

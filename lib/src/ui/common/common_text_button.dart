@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 import 'package:mathgame/src/ui/common/common_tab_animation_view.dart';
 import 'package:tuple/tuple.dart';
 
@@ -34,10 +35,7 @@ class CommonTextButton extends StatelessWidget {
           alignment: Alignment.center,
           child: Text(
             text,
-            style: Theme.of(context)
-                .textTheme
-                .subtitle1!
-                .copyWith(fontSize: 24, color: Colors.white),
+            style: Theme.of(context).textTheme.subtitle1!.copyWith(fontSize: ViewUtils().getViewSize(24), color: Colors.white),
           ),
         ),
       ),

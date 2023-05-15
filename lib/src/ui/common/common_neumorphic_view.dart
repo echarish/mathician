@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 import '../../core/app_assets.dart';
 
 class CommonNeumorphicView extends StatelessWidget {
@@ -18,8 +19,8 @@ class CommonNeumorphicView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height,
-      width: isLarge ? null : width,
+      height: ViewUtils().getViewSize(height),
+      width: isLarge ? null : ViewUtils().getViewSize(width),
       alignment: Alignment.center,
       decoration: BoxDecoration(
         image: DecorationImage(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mathgame/src/core/color_scheme.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 import 'package:mathgame/src/ui/common/common_tab_animation_view.dart';
 
 class CommonBackButton extends StatelessWidget {
@@ -27,10 +28,14 @@ class CommonBackButton extends StatelessWidget {
           child: Container(
               alignment: Alignment.center,
               color: Theme.of(context).colorScheme.cardBgColor,
-              padding: const EdgeInsets.symmetric(horizontal: 24),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 24,
+                vertical: 24,
+              ),
               child: Icon(
                 Icons.backspace,
                 color: Theme.of(context).colorScheme.crossColor,
+                size: ViewUtils().getViewSize(18),
               )),
         ),
       ),

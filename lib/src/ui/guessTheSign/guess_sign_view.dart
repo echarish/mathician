@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 import 'package:mathgame/src/data/models/sign.dart';
 import 'package:mathgame/src/ui/app/theme_provider.dart';
 import 'package:mathgame/src/ui/common/common_neumorphic_view.dart';
@@ -41,12 +42,11 @@ class GuessSignView extends StatelessWidget {
             child: DialogListener<GuessSignProvider>(
               gameCategoryType: GameCategoryType.GUESS_SIGN,
               child: Container(
-                margin: EdgeInsets.only(top: 24, left: 24, right: 24),
+                margin: EdgeInsets.only(top: ViewUtils().getViewSize(24), left: ViewUtils().getViewSize(24), right: ViewUtils().getViewSize(24)),
                 constraints: BoxConstraints.expand(),
                 child: Column(
                   children: <Widget>[
-                    CommonInfoTextView<GuessSignProvider>(
-                        gameCategoryType: GameCategoryType.GUESS_SIGN),
+                    CommonInfoTextView<GuessSignProvider>(gameCategoryType: GameCategoryType.GUESS_SIGN),
                     Expanded(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -56,16 +56,12 @@ class GuessSignView extends StatelessWidget {
                               builder: (context, calculatorProvider, child) {
                                 return Text(
                                   calculatorProvider.firstDigit,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .subtitle2!
-                                      .copyWith(fontSize: 30),
+                                  style: Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: ViewUtils().getViewSize(30)),
                                 );
                               }),
                           SizedBox(width: 14),
                           Selector<GuessSignProvider, Tuple2<double, double>>(
-                            selector: (p0, p1) =>
-                                Tuple2(p1.currentScore, p1.oldScore),
+                            selector: (p0, p1) => Tuple2(p1.currentScore, p1.oldScore),
                             builder: (context, tuple2, child) {
                               return CommonWrongAnswerAnimationView(
                                 currentScore: tuple2.item1.toInt(),
@@ -82,9 +78,7 @@ class GuessSignView extends StatelessWidget {
                                     style: Theme.of(context)
                                         .textTheme
                                         .subtitle2!
-                                        .copyWith(
-                                            fontSize: 30,
-                                            color: colorTuple.item1),
+                                        .copyWith(fontSize: ViewUtils().getViewSize(30), color: colorTuple.item1),
                                   );
                                 },
                               ),
@@ -96,30 +90,21 @@ class GuessSignView extends StatelessWidget {
                               builder: (context, calculatorProvider, child) {
                                 return Text(
                                   calculatorProvider.secondDigit,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .subtitle2!
-                                      .copyWith(fontSize: 30),
+                                  style: Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: ViewUtils().getViewSize(30)),
                                 );
                               }),
-                          SizedBox(width: 6),
+                          SizedBox(width: ViewUtils().getViewSize(6)),
                           Text(
                             "=",
-                            style: Theme.of(context)
-                                .textTheme
-                                .subtitle2!
-                                .copyWith(fontSize: 30),
+                            style: Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: ViewUtils().getViewSize(30)),
                           ),
-                          SizedBox(width: 6),
+                          SizedBox(width: ViewUtils().getViewSize(6)),
                           Selector<GuessSignProvider, Sign>(
                               selector: (p0, p1) => p1.currentState,
                               builder: (context, calculatorProvider, child) {
                                 return Text(
                                   calculatorProvider.answer,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .subtitle2!
-                                      .copyWith(fontSize: 30),
+                                  style: Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: ViewUtils().getViewSize(30)),
                                 );
                               }),
                         ],
@@ -127,8 +112,7 @@ class GuessSignView extends StatelessWidget {
                     ),
                     Builder(builder: (context) {
                       return GridView(
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
                         padding: const EdgeInsets.only(bottom: 24),
                         shrinkWrap: true,
                         physics: NeverScrollableScrollPhysics(),
@@ -143,12 +127,10 @@ class GuessSignView extends StatelessWidget {
                               return CommonNumberButton(
                                 text: e,
                                 onTab: () {
-                                  context
-                                      .read<GuessSignProvider>()
-                                      .checkResult(e);
+                                  context.read<GuessSignProvider>().checkResult(e);
                                 },
                                 colorTuple: colorTuple,
-                                fontSize: 48,
+                                fontSize: ViewUtils().getViewSize(48),
                               );
                             },
                           )

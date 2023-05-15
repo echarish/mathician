@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mathgame/src/core/app_constant.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 
 class CommonGameOverDialogView extends StatelessWidget {
   final GameCategoryType gameCategoryType;
@@ -19,13 +20,13 @@ class CommonGameOverDialogView extends StatelessWidget {
         SizedBox(height: 6),
         Text(
           "Game Over!!!",
-          style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 18),
+          style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: ViewUtils().getViewSize(18)),
         ),
         SizedBox(height: 24),
         Text(
           "Your highest score is $score",
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.caption!.copyWith(fontSize: 16),
+          style: Theme.of(context).textTheme.caption!.copyWith(fontSize: ViewUtils().getViewSize(16)),
         ),
         SizedBox(height: 24),
         Row(
@@ -54,10 +55,7 @@ class CommonGameOverDialogView extends StatelessWidget {
                           ),
                         ),
                         child: Text("RESTART",
-                            style: Theme.of(context)
-                                .textTheme
-                                .subtitle1!
-                                .copyWith(fontSize: 18, color: Colors.white))),
+                            style: Theme.of(context).textTheme.subtitle1!.copyWith(fontSize: ViewUtils().getViewSize(18), color: Colors.white))),
                   ),
                 ),
               ),
@@ -89,6 +87,7 @@ class CommonGameOverDialogView extends StatelessWidget {
                     child: Icon(
                       Icons.clear,
                       color: Colors.white,
+                      size: ViewUtils().getViewSize(18),
                     ),
                   ),
                 ),

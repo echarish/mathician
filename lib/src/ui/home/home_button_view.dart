@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mathgame/src/core/app_assets.dart';
 import 'package:mathgame/src/core/color_scheme.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 import 'package:mathgame/src/ui/common/common_tab_animation_view.dart';
 import 'package:tuple/tuple.dart';
 
@@ -29,7 +30,7 @@ class HomeButtonView extends StatelessWidget {
       onTab: onTab,
       isDelayed: true,
       child: Card(
-        margin: EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+        margin: EdgeInsets.symmetric(horizontal: ViewUtils().getViewSize(24), vertical: ViewUtils().getViewSize(10)),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
         ),
@@ -38,7 +39,7 @@ class HomeButtonView extends StatelessWidget {
           borderRadius: BorderRadius.circular(24),
           child: Container(
               alignment: Alignment.center,
-              height: 132,
+              height: ViewUtils().getViewSize(132),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [colorTuple.item1, colorTuple.item2],
@@ -51,8 +52,7 @@ class HomeButtonView extends StatelessWidget {
                   Align(
                     alignment: Alignment.bottomRight,
                     child: Transform(
-                      transform: Matrix4.identity().scaled(5.2)
-                        ..translate(-17.0, -27.0),
+                      transform: Matrix4.identity().scaled(5.2)..translate(-17.0, -27.0),
                       child: SvgPicture.asset(
                         icon,
                         color: Colors.white.withOpacity(opacity),
@@ -62,7 +62,7 @@ class HomeButtonView extends StatelessWidget {
                   Align(
                     alignment: Alignment.center,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 24),
+                      padding: EdgeInsets.symmetric(horizontal: ViewUtils().getViewSize(24)),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -70,16 +70,12 @@ class HomeButtonView extends StatelessWidget {
                             children: [
                               SvgPicture.asset(
                                 icon,
-                                width: 28,
-                                height: 28,
+                                width: ViewUtils().getViewSize(28),
+                                height: ViewUtils().getViewSize(28),
                               ),
-                              SizedBox(width: 22),
+                              SizedBox(width: ViewUtils().getViewSize(22)),
                               Text(title,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .subtitle1!
-                                      .copyWith(
-                                          fontSize: 18, color: Colors.white)),
+                                  style: Theme.of(context).textTheme.subtitle1!.copyWith(fontSize: ViewUtils().getViewSize(18), color: Colors.white)),
                             ],
                           ),
                           SizedBox(height: 16),
@@ -97,31 +93,27 @@ class HomeButtonView extends StatelessWidget {
                                         style: Theme.of(context)
                                             .textTheme
                                             .subtitle1!
-                                            .copyWith(
-                                                fontSize: 14,
-                                                color: Colors.white)),
-                                    SizedBox(width: 14),
+                                            .copyWith(fontSize: ViewUtils().getViewSize(14), color: Colors.white)),
+                                    SizedBox(width: ViewUtils().getViewSize(14)),
                                     SvgPicture.asset(
                                       AppAssets.icTrophy,
-                                      width: 18,
-                                      height: 18,
+                                      width: ViewUtils().getViewSize(18),
+                                      height: ViewUtils().getViewSize(18),
                                     ),
                                     SizedBox(width: 4),
                                     Text(score.toString(),
                                         style: Theme.of(context)
                                             .textTheme
                                             .subtitle2!
-                                            .copyWith(
-                                            fontSize: 14,
-                                            color: Colors.white)),
+                                            .copyWith(fontSize: ViewUtils().getViewSize(14), color: Colors.white)),
                                   ],
                                 ),
                               ),
                               SvgPicture.asset(
                                 AppAssets.icPlayCircleFilled,
                                 color: Colors.white,
-                                height: 39,
-                                width: 39,
+                                height: ViewUtils().getViewSize(39),
+                                width: ViewUtils().getViewSize(39),
                               )
                             ],
                           )

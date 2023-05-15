@@ -213,12 +213,13 @@ class _DashboardViewState extends State<DashboardView> with SingleTickerProvider
                             children: [
                               SvgPicture.asset(
                                 AppAssets.icTrophy,
-                                width: 24,
-                                height: 24,
+                                width: ViewUtils().getViewSize(24),
+                                height: ViewUtils().getViewSize(24),
                               ),
                               SizedBox(width: 5),
                               Consumer<DashboardProvider>(
-                                builder: (context, model, child) => Text(model.overallScore.toString(), style: Theme.of(context).textTheme.subtitle1),
+                                builder: (context, model, child) => Text(model.overallScore.toString(),
+                                    style: Theme.of(context).textTheme.subtitle1!.copyWith(fontSize: ViewUtils().getViewSize(20))),
                               ),
                             ],
                           ),
@@ -247,8 +248,8 @@ class _DashboardViewState extends State<DashboardView> with SingleTickerProvider
                         padding: const EdgeInsets.all(12),
                         child: SvgPicture.asset(
                           Theme.of(context).brightness == Brightness.light ? AppAssets.adsBlockDark : AppAssets.adsBlockLight,
-                          width: 24,
-                          height: 24,
+                          width: ViewUtils().getViewSize(24),
+                          height: ViewUtils().getViewSize(24),
                         ),
                       ),
                     ),
@@ -275,8 +276,8 @@ class _DashboardViewState extends State<DashboardView> with SingleTickerProvider
                         padding: const EdgeInsets.all(12),
                         child: SvgPicture.asset(
                           Theme.of(context).brightness == Brightness.light ? AppAssets.ic3dStairsDark : AppAssets.ic3dStairsLight,
-                          width: 24,
-                          height: 24,
+                          width: ViewUtils().getViewSize(24),
+                          height: ViewUtils().getViewSize(24),
                         ),
                       ),
                     ),
@@ -289,8 +290,8 @@ class _DashboardViewState extends State<DashboardView> with SingleTickerProvider
                         padding: const EdgeInsets.all(12),
                         child: SvgPicture.asset(
                           Theme.of(context).brightness == Brightness.light ? AppAssets.icDarkMode : AppAssets.icLightMode,
-                          width: 24,
-                          height: 24,
+                          width: ViewUtils().getViewSize(24),
+                          height: ViewUtils().getViewSize(24),
                         ),
                       ),
                     ),
@@ -307,12 +308,12 @@ class _DashboardViewState extends State<DashboardView> with SingleTickerProvider
                         SizedBox(height: 36),
                         Text(
                           "MATHician",
-                          style: Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: 28, fontWeight: FontWeight.bold),
+                          style: Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: ViewUtils().getViewSize(28), fontWeight: FontWeight.bold),
                         ),
                         SizedBox(height: 12),
                         Text(
                           "Train Your Brain, Improve Your Math Skill",
-                          style: Theme.of(context).textTheme.caption!.copyWith(fontSize: 14),
+                          style: Theme.of(context).textTheme.caption!.copyWith(fontSize: ViewUtils().getViewSize(14)),
                         ),
                         SizedBox(height: 36),
                         DashboardButtonView(
@@ -367,13 +368,13 @@ class _DashboardViewState extends State<DashboardView> with SingleTickerProvider
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Expanded(
-                        child: Text("MathIcian by RightCode", style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.normal)),
+                        child: Text("MathIcian by RightCode", style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.normal,fontSize: ViewUtils().getViewSize(14) )),
                       ),
                       SizedBox(width: 12),
                       FutureBuilder<PackageInfo>(
                         future: PackageInfo.fromPlatform(),
                         builder: (context, snapshot) =>
-                            Text("v${snapshot.data?.version}", style: Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: 14)),
+                            Text("v${snapshot.data?.version}", style: Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: ViewUtils().getViewSize(14) )),
                       ),
                     ],
                   ),

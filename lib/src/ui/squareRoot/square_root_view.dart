@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mathgame/src/core/app_assets.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 import 'package:mathgame/src/data/models/square_root.dart';
 import 'package:mathgame/src/ui/app/theme_provider.dart';
 import 'package:mathgame/src/ui/common/common_number_button.dart';
@@ -45,15 +46,14 @@ class SquareRootView extends StatelessWidget {
                 constraints: BoxConstraints.expand(),
                 child: Column(
                   children: <Widget>[
-                    CommonInfoTextView<SquareRootProvider>(
-                        gameCategoryType: GameCategoryType.SQUARE_ROOT),
+                    CommonInfoTextView<SquareRootProvider>(gameCategoryType: GameCategoryType.SQUARE_ROOT),
                     Expanded(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           SvgPicture.asset(
                             AppAssets.icRoot,
-                            height: 40,
+                            height: ViewUtils().getViewSize(40),
                             color: colorTuple.item1,
                           ),
                           Selector<SquareRootProvider, SquareRoot>(
@@ -61,10 +61,7 @@ class SquareRootView extends StatelessWidget {
                               builder: (context, currentState, child) {
                                 return Text(
                                   currentState.question,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .subtitle2!
-                                      .copyWith(fontSize: 40),
+                                  style: Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: ViewUtils().getViewSize(40)),
                                 );
                               }),
                         ],
@@ -74,9 +71,7 @@ class SquareRootView extends StatelessWidget {
                       selector: (p0, p1) => p1.currentState,
                       builder: (context, currentState, child) {
                         return GridView(
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2),
+                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
                           padding: const EdgeInsets.only(bottom: 24),
                           shrinkWrap: true,
                           physics: NeverScrollableScrollPhysics(),
@@ -91,12 +86,10 @@ class SquareRootView extends StatelessWidget {
                                 return CommonNumberButton(
                                   text: e,
                                   onTab: () {
-                                    context
-                                        .read<SquareRootProvider>()
-                                        .checkResult(e);
+                                    context.read<SquareRootProvider>().checkResult(e);
                                   },
                                   colorTuple: colorTuple,
-                                  fontSize: 48,
+                                  fontSize: ViewUtils().getViewSize(48),
                                 );
                               },
                             )

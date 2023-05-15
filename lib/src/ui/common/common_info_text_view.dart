@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mathgame/src/core/app_constant.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 import 'package:mathgame/src/utility/dialog_info_util.dart';
 import 'package:provider/provider.dart';
 import '../app/game_provider.dart';
@@ -25,18 +26,12 @@ class CommonInfoTextView<T extends GameProvider> extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
-                DialogInfoUtil.getInfoDialogData(gameCategoryType)
-                    .title
-                    .toUpperCase(),
-                style: Theme.of(context)
-                    .textTheme
-                    .caption!
-                    .copyWith(fontWeight: FontWeight.bold)),
+            Text(DialogInfoUtil.getInfoDialogData(gameCategoryType).title.toUpperCase(),
+                style: Theme.of(context).textTheme.caption!.copyWith(fontSize: ViewUtils().getViewSize(14), fontWeight: FontWeight.bold)),
             SizedBox(width: 4),
             Icon(
               Icons.info,
-              size: 13,
+              size: ViewUtils().getViewSize(13),
               color: Theme.of(context).textTheme.caption!.color,
             ),
           ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mathgame/src/core/app_constant.dart';
 import 'package:mathgame/src/core/color_scheme.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 import 'package:mathgame/src/data/models/game_info_dialog.dart';
 import 'package:mathgame/src/utility/dialog_info_util.dart';
 
@@ -14,8 +15,7 @@ class CommonInfoDialogView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GameInfoDialog gameInfoDialog =
-        DialogInfoUtil.getInfoDialogData(gameCategoryType);
+    GameInfoDialog gameInfoDialog = DialogInfoUtil.getInfoDialogData(gameCategoryType);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
       child: Column(
@@ -23,10 +23,7 @@ class CommonInfoDialogView extends StatelessWidget {
         children: [
           Text(
             gameInfoDialog.title,
-            style: Theme.of(context)
-                .textTheme
-                .bodyText1!
-                .copyWith(fontSize: 18),
+            style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: ViewUtils().getViewSize(18)),
           ),
           SizedBox(height: 24),
           Container(
@@ -50,8 +47,7 @@ class CommonInfoDialogView extends StatelessWidget {
             child: Text(
               gameInfoDialog.dec,
               textAlign: TextAlign.center,
-              style:
-                  Theme.of(context).textTheme.caption!.copyWith(fontSize: 16),
+              style: Theme.of(context).textTheme.caption!.copyWith(fontSize: ViewUtils().getViewSize(16)),
             ),
           ),
           SizedBox(height: 18),
@@ -64,19 +60,13 @@ class CommonInfoDialogView extends StatelessWidget {
                   Text(
                     "${gameInfoDialog.correctAnswerScore}",
                     textAlign: TextAlign.center,
-                    style: Theme.of(context)
-                        .textTheme
-                        .subtitle2!
-                        .copyWith(fontSize: 14),
+                    style: Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: ViewUtils().getViewSize(14)),
                   ),
                   SizedBox(height: 8),
                   Text(
                     "${gameInfoDialog.wrongAnswerScore}",
                     textAlign: TextAlign.center,
-                    style: Theme.of(context)
-                        .textTheme
-                        .subtitle2!
-                        .copyWith(fontSize: 14),
+                    style: Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: ViewUtils().getViewSize(14)),
                   ),
                 ],
               ),
@@ -87,19 +77,13 @@ class CommonInfoDialogView extends StatelessWidget {
                   Text(
                     "for correct answer",
                     textAlign: TextAlign.center,
-                    style: Theme.of(context)
-                        .textTheme
-                        .subtitle1!
-                        .copyWith(fontSize: 14),
+                    style: Theme.of(context).textTheme.subtitle1!.copyWith(fontSize: ViewUtils().getViewSize(14)),
                   ),
                   SizedBox(height: 8),
                   Text(
                     "for wrong answer",
                     textAlign: TextAlign.center,
-                    style: Theme.of(context)
-                        .textTheme
-                        .subtitle1!
-                        .copyWith(fontSize: 14),
+                    style: Theme.of(context).textTheme.subtitle1!.copyWith(fontSize: ViewUtils().getViewSize(14)),
                   ),
                 ],
               ),
@@ -130,10 +114,7 @@ class CommonInfoDialogView extends StatelessWidget {
                       ),
                     ),
                     child: Text("GOT IT!",
-                        style: Theme.of(context)
-                            .textTheme
-                            .subtitle1!
-                            .copyWith(fontSize: 18, color: Colors.white))),
+                        style: Theme.of(context).textTheme.subtitle1!.copyWith(fontSize: ViewUtils().getViewSize(18), color: Colors.white))),
               ),
             ),
           )

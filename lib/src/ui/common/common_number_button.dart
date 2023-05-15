@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 import 'package:mathgame/src/ui/common/common_tab_animation_view.dart';
 import 'package:tuple/tuple.dart';
 
@@ -51,12 +52,11 @@ class CommonNumberButton extends StatelessWidget {
                           alignment: Alignment.centerLeft,
                           child: Text(
                             text,
-                            style:
-                                Theme.of(context).textTheme.subtitle1!.copyWith(
-                                      fontSize: 18,
-                                      color: Colors.white.withOpacity(0.05),
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                            style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                                  fontSize: ViewUtils().getViewSize(18),
+                                  color: Colors.white.withOpacity(0.05),
+                                  fontWeight: FontWeight.bold,
+                                ),
                           ),
                         ),
                       );
@@ -67,11 +67,7 @@ class CommonNumberButton extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 24),
                       child: Text(text,
-                          style: Theme.of(context)
-                              .textTheme
-                              .subtitle1!
-                              .copyWith(
-                                  fontSize: fontSize, color: Colors.white)),
+                          style: Theme.of(context).textTheme.subtitle1!.copyWith(fontSize: ViewUtils().getViewSize(fontSize), color: Colors.white)),
                     ),
                   ),
                 ],

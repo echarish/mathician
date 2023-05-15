@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mathgame/src/core/app_assets.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 import 'package:mathgame/src/data/models/dashboard.dart';
 import 'package:mathgame/src/ui/common/common_tab_animation_view.dart';
 
@@ -36,10 +37,7 @@ class DashboardButtonView extends StatelessWidget {
                 height: 116,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [
-                      dashboard.colorTuple.item1,
-                      dashboard.colorTuple.item2
-                    ],
+                    colors: [dashboard.colorTuple.item1, dashboard.colorTuple.item2],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                   ),
@@ -49,8 +47,7 @@ class DashboardButtonView extends StatelessWidget {
                     Align(
                       alignment: Alignment.bottomLeft,
                       child: Transform(
-                        transform: Matrix4.identity().scaled(5.0)
-                          ..translate(0.0, -27.0),
+                        transform: Matrix4.identity().scaled(5.0)..translate(0.0, -27.0),
                         child: SvgPicture.asset(
                           dashboard.icon,
                           color: Colors.white.withOpacity(dashboard.opacity),
@@ -64,18 +61,15 @@ class DashboardButtonView extends StatelessWidget {
                         children: [
                           SvgPicture.asset(
                             dashboard.icon,
-                            width: 28,
-                            height: 28,
+                            width: ViewUtils().getViewSize(28),
+                            height: ViewUtils().getViewSize(28),
                           ),
                           SizedBox(width: 12),
                           Text(dashboard.title,
                               style: Theme.of(context)
                                   .textTheme
                                   .subtitle2!
-                                  .copyWith(
-                                      fontSize: 24,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w400)),
+                                  .copyWith(fontSize: ViewUtils().getViewSize(24), color: Colors.white, fontWeight: FontWeight.w400)),
                         ],
                       ),
                     ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mathgame/src/core/color_scheme.dart';
+import 'package:mathgame/src/core/view_utils.dart';
 import 'package:mathgame/src/data/models/math_grid.dart';
 import 'package:provider/provider.dart';
 import 'package:mathgame/src/ui/mathGrid/math_grid_provider.dart';
@@ -23,9 +24,7 @@ class MathGridButton extends StatelessWidget {
           border: Border.all(color: Colors.white24, width: 0.5),
           color: gridModel.isRemoved
               ? Theme.of(context).colorScheme.baseColor
-              : (gridModel.isActive
-                  ? Theme.of(context).colorScheme.baseColor
-                  : Colors.transparent)),
+              : (gridModel.isActive ? Theme.of(context).colorScheme.baseColor : Colors.transparent)),
       child: Visibility(
         visible: !(gridModel.isRemoved),
         child: InkWell(
@@ -36,7 +35,9 @@ class MathGridButton extends StatelessWidget {
             child: Text(
               gridModel.value.toString(),
               style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                  color: gridModel.isActive ? colorTuple.item1 : Colors.white),
+                    fontSize: ViewUtils().getViewSize(20),
+                    color: gridModel.isActive ? colorTuple.item1 : Colors.white,
+                  ),
             ),
           ),
         ),
